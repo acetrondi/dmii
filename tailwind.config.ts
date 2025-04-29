@@ -54,11 +54,11 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				course: {
-					main: "#1A1F2C",
-					accent: "#D6BCFA",
+					main: "#144484",
+					accent: "#4A7FBF",
 					muted: "#8E9196",
-					light: "#F1F0FB",
-					gradient: "#E5DEFF"
+					light: "#EBF2FB",
+					gradient: "#D1E2F7"
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
