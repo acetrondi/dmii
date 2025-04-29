@@ -1,9 +1,11 @@
 
-import React from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'lucide-react';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -18,10 +20,26 @@ const Navbar = () => {
           <Link to="/#faq" className="text-course-main/90 hover:text-course-main transition-colors">FAQ</Link>
         </nav>
         
-        <div className="flex items-center gap-3">
-          <Button variant="outline" size="sm" className="hidden sm:flex">Login</Button>
-          <Button size="sm" className="bg-course-main text-white hover:bg-course-main/90">Enroll Now</Button>
-        </div>
+        {/* Mobile menu button */}
+        <button 
+          className="md:hidden flex items-center" 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <Menu className="h-6 w-6 text-course-main" />
+        </button>
+        
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 w-full bg-white shadow-md py-4 md:hidden">
+            <div className="container mx-auto px-4 flex flex-col gap-3">
+              <Link to="/" className="text-course-main/90 hover:text-course-main transition-colors py-2">Home</Link>
+              <Link to="/#curriculum" className="text-course-main/90 hover:text-course-main transition-colors py-2">Curriculum</Link>
+              <Link to="/#fees" className="text-course-main/90 hover:text-course-main transition-colors py-2">Fees</Link>
+              <Link to="/#faq" className="text-course-main/90 hover:text-course-main transition-colors py-2">FAQ</Link>
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );
