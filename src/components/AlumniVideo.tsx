@@ -1,5 +1,4 @@
-
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 
 interface AlumniVideoProps {
   videoUrl: string;
@@ -25,24 +24,25 @@ const AlumniVideo = ({ videoUrl }: AlumniVideoProps) => {
   };
 
   return (
-    <div 
+    <div
       className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <video 
-        ref={videoRef}
-        src={videoUrl}
-        className="w-full h-auto"
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster={videoUrl.replace('.mp4', '.jpg')}
-      />
-      <div className={`p-4 bg-white ${isHovering ? 'bg-course-accent/10' : ''}`}>
-        <h3 className="font-semibold text-course-main">Alumni Success Story</h3>
-        <p className="text-sm text-course-muted">Hover to see their journey</p>
+      <div className="relative h-96">
+        <video
+          ref={videoRef}
+          src={videoUrl}
+          className="w-full h-full object-fit"
+          muted={false}
+          loop
+          playsInline
+          preload="auto"
+          poster={videoUrl.replace(".mp4", ".jpg")}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent pointer-events-none flex items-end p-3">
+          <p className="text-white text-sm font-medium">Alumni Success Story</p>
+        </div>
       </div>
     </div>
   );

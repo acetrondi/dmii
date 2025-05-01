@@ -1,160 +1,152 @@
-
-import React, { useRef, useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useRef, useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "Digital Marketing Manager",
-    company: "TechCorp",
-    image: "https://source.unsplash.com/random/100x100/?portrait,woman1",
-    text: "The AI marketing course at DMII was a game-changer for my career. I've implemented the strategies and seen a 40% increase in our campaign ROI."
+    image: "./1.png",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Content Strategist",
-    company: "MediaPulse",
-    image: "https://source.unsplash.com/random/100x100/?portrait,man1",
-    text: "Learning at DMII gave me practical, hands-on experience with actual clients. The AI tools and techniques I learned are now essential to my daily workflow."
+    image: "./2.png",
   },
   {
     id: 3,
-    name: "Priya Patel",
-    role: "Social Media Specialist",
-    company: "BrandGrowth",
-    image: "https://source.unsplash.com/random/100x100/?portrait,woman2",
-    text: "From a social media beginner to managing campaigns for major brands—DMII's real-world training and AI focus made all the difference."
+    image: "./3.png",
   },
   {
     id: 4,
-    name: "James Wilson",
-    role: "SEO Director",
-    company: "RankMasters",
-    image: "https://source.unsplash.com/random/100x100/?portrait,man2",
-    text: "The AI-powered SEO techniques I learned at DMII have revolutionized how I approach search optimization. Highly recommend to anyone serious about digital marketing."
+    image: "./4.png",
   },
   {
     id: 5,
-    name: "Leila Ahmed",
-    role: "Email Marketing Strategist",
-    company: "ConversionPro",
-    image: "https://source.unsplash.com/random/100x100/?portrait,woman3",
-    text: "The mentorship and real client projects at DMII prepared me for my dream role better than years of traditional education could have."
+    image: "./5.png",
   },
   {
     id: 6,
-    name: "David Lee",
-    role: "PPC Campaign Manager",
-    company: "AdVantage",
-    image: "https://source.unsplash.com/random/100x100/?portrait,man3",
-    text: "Learning how to integrate AI with paid campaigns has reduced our client's acquisition costs by 35%. The DMII certification opened doors to high-level opportunities."
+    image: "./6.png",
   },
 ];
 
 const TestimonialCarousel = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' 
-        ? -carouselRef.current.clientWidth * 0.8 
-        : carouselRef.current.clientWidth * 0.8;
-      
-      carouselRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
+  // Calculate how many items to show based on screen size
+  const getVisibleCount = () => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
     }
+    return 1;
   };
-  
-  const checkScrollable = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-      
-      // Check if we can scroll left
-      setCanScrollLeft(scrollLeft > 0);
-      
-      // Check if we can scroll right
-      setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 10); // Adding a small buffer
+
+  const [visibleCount, setVisibleCount] = useState(getVisibleCount());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setVisibleCount(getVisibleCount());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const scroll = (direction: "left" | "right") => {
+    if (direction === "left") {
+      // If at the beginning, loop to the end
+      if (activeIndex === 0) {
+        setActiveIndex(testimonials.length - 1);
+      } else {
+        // Move one item at a time
+        setActiveIndex((prev) => prev - 1);
+      }
+    } else {
+      // If at the end, loop to the beginning
+      if (activeIndex >= testimonials.length - 1) {
+        setActiveIndex(0);
+      } else {
+        // Move one item at a time
+        setActiveIndex((prev) => prev + 1);
+      }
     }
   };
 
+  // Calculate total slides for indicators (always equal to number of testimonials)
+  const totalSlides = testimonials.length;
+
+  // Always allow scrolling in both directions due to looping
   useEffect(() => {
-    const carousel = carouselRef.current;
-    
-    if (carousel) {
-      carousel.addEventListener('scroll', checkScrollable);
-      // Initial check
-      checkScrollable();
-      
-      return () => {
-        carousel.removeEventListener('scroll', checkScrollable);
-      };
+    setCanScrollLeft(true);
+    setCanScrollRight(true);
+  }, [activeIndex]);
+
+  // Get visible items based on current index with looping
+  const getVisibleItems = () => {
+    const items = [];
+
+    for (let i = 0; i < visibleCount; i++) {
+      const index = (activeIndex + i) % testimonials.length;
+      items.push(testimonials[index]);
     }
-  }, []);
+
+    return items;
+  };
+
+  const visibleItems = getVisibleItems();
 
   return (
     <div className="relative">
-      <div 
-        ref={carouselRef}
-        className="flex overflow-x-auto space-x-4 pb-8 hide-scrollbar scroll-smooth"
-      >
-        {testimonials.map((testimonial) => (
-          <div 
-            key={testimonial.id}
-            className="min-w-[300px] md:min-w-[400px] bg-white p-6 rounded-lg shadow-md flex-shrink-0 border border-gray-100"
-          >
-            <div className="flex items-center space-x-4 mb-4">
-              <div className="h-14 w-14 rounded-full overflow-hidden">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name} 
-                  className="h-full w-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="font-semibold text-course-main">{testimonial.name}</h3>
-                <p className="text-sm text-gray-600">
-                  {testimonial.role}, {testimonial.company}
-                </p>
-              </div>
+      <div className="overflow-hidden py-4">
+        <div className="flex transition-transform duration-500 ease-in-out">
+          {visibleItems.map((testimonial, idx) => (
+            <div key={`${testimonial.id}-${idx}`} className="px-3 flex-1">
+              <img
+                src={testimonial.image}
+                alt={`Testimonial ${testimonial.id}`}
+                className="w-full h-auto object-contain rounded-sm"
+              />
             </div>
-            <p className="text-course-muted">"{testimonial.text}"</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      
-      <div className="absolute top-1/2 -left-4 -translate-y-1/2">
-        <Button 
-          onClick={() => scroll('left')} 
-          variant="outline" 
-          size="icon" 
-          className={`rounded-full bg-white shadow-md hover:bg-course-accent/10 ${
-            !canScrollLeft ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={!canScrollLeft}
+
+      <div className="absolute top-1/2 -left-4 -translate-y-1/2 z-10">
+        <Button
+          onClick={() => scroll("left")}
+          variant="outline"
+          size="icon"
+          className="rounded-full bg-white shadow-md hover:bg-course-accent/10"
         >
           <ArrowLeft className="h-4 w-4" />
         </Button>
       </div>
-      
-      <div className="absolute top-1/2 -right-4 -translate-y-1/2">
-        <Button 
-          onClick={() => scroll('right')} 
-          variant="outline" 
-          size="icon" 
-          className={`rounded-full bg-white shadow-md hover:bg-course-accent/10 ${
-            !canScrollRight ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={!canScrollRight}
+
+      <div className="absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+        <Button
+          onClick={() => scroll("right")}
+          variant="outline"
+          size="icon"
+          className="rounded-full bg-white shadow-md hover:bg-course-accent/10"
         >
           <ArrowRight className="h-4 w-4" />
         </Button>
+      </div>
+
+      {/* Indicators */}
+      <div className="flex justify-center space-x-2 mt-4">
+        {Array.from({ length: totalSlides }).map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className={`h-2 w-2 rounded-full transition-all ${
+              activeIndex === index ? "bg-course-main w-4" : "bg-gray-300"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );
