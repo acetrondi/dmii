@@ -23,6 +23,24 @@ const CourseDropdown = () => {
     };
   }, []);
 
+  // Function to scroll to the courses section
+  const scrollToCoursesSection = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsOpen(false);
+
+    // If we're not on the home page, navigate to home page first
+    if (window.location.pathname !== "/") {
+      window.location.href = "/#courses";
+      return;
+    }
+
+    // If we're already on the home page, scroll to the section
+    const coursesSection = document.getElementById("courses");
+    if (coursesSection) {
+      coursesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative" ref={dropdownRef}>
       <button
@@ -60,13 +78,13 @@ const CourseDropdown = () => {
           >
             Expert in Digital Marketing
           </Link>
-          <Link
-            to="/course"
+          <a
+            href="#courses"
             className="block px-4 py-2 text-course-main hover:bg-course-accent/10 transition-colors"
-            onClick={() => setIsOpen(false)}
+            onClick={scrollToCoursesSection}
           >
             All Courses
-          </Link>
+          </a>
         </div>
       )}
     </div>

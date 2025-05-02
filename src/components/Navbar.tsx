@@ -23,6 +23,24 @@ const Navbar = () => {
     };
   }, []);
 
+  // Function to scroll to a specific section
+  const scrollToSection = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+
+    // If we're not on the home page, navigate to home page first
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
+    // If we're already on the home page, scroll to the section
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -38,49 +56,44 @@ const Navbar = () => {
         </div>
 
         <nav className="hidden lg:flex items-center gap-6">
-          <Link
-            to="/"
+          <a
+            href="#"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
+            onClick={(e) => {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
           >
             Home
-          </Link>
+          </a>
           <CourseDropdown />
-          <Link
-            to="/#usp"
-            className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
-          >
-            USP
-          </Link>
-          <Link
-            to="/#ai-tools"
-            className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
-          >
-            AI
-          </Link>
-          <Link
+
+          {/* <Link
             to="/#certificates"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
           >
             Certificates
-          </Link>
+          </Link> */}
           <Link
             to="/#blog"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
           >
             Blogs
           </Link>
-          <Link
-            to="/#contact"
+          <a
+            href="#contact"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
+            onClick={(e) => scrollToSection(e, "contact")}
           >
             Contact
-          </Link>
-          <Link
-            to="/#about"
+          </a>
+          <a
+            href="#about"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
+            onClick={(e) => scrollToSection(e, "about")}
           >
             About
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile menu button */}
@@ -100,17 +113,21 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white shadow-md py-4 lg:hidden animate-fade-in">
             <div className="container mx-auto px-4 flex flex-col gap-3">
-              <Link
-                to="/"
+              <a
+                href="#"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
               >
                 Home
-              </Link>
+              </a>
               <Link
-                to="/course"
+                to="#courses"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "courses")}
               >
                 All Courses
               </Link>
@@ -135,27 +152,27 @@ const Navbar = () => {
               >
                 Expert in Digital Marketing
               </Link>
-              <Link
-                to="/#usp"
+              <a
+                href="#usp"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "usp")}
               >
                 USP
-              </Link>
-              <Link
-                to="/#ai-tools"
+              </a>
+              <a
+                href="#ai-tools"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "ai-tools")}
               >
                 AI
-              </Link>
-              <Link
-                to="/#certificates"
+              </a>
+              <a
+                href="#certificates"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "certificates")}
               >
                 Certificates
-              </Link>
+              </a>
               <Link
                 to="/#blog"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
@@ -163,20 +180,20 @@ const Navbar = () => {
               >
                 Blogs
               </Link>
-              <Link
-                to="/#contact"
+              <a
+                href="#contact"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "contact")}
               >
                 Contact
-              </Link>
-              <Link
-                to="/#about"
+              </a>
+              <a
+                href="#about"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, "about")}
               >
                 About
-              </Link>
+              </a>
             </div>
           </div>
         )}

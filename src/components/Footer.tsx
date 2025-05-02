@@ -1,6 +1,23 @@
 import React from "react";
 
 const Footer = () => {
+  // Function to scroll to a specific section
+  const scrollToSection = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+
+    // If we're not on the home page, navigate to home page first
+    if (window.location.pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
+
+    // If we're already on the home page, scroll to the section
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-course-main text-white py-16">
       <div className="container mx-auto px-4">
@@ -87,36 +104,60 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white">
+                <a
+                  href="#"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }}
+                >
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#curriculum"
+                  href="#courses"
                   className="text-gray-300 hover:text-white"
+                  onClick={(e) => scrollToSection(e, "courses")}
                 >
-                  Curriculum
+                  Courses
                 </a>
               </li>
               <li>
-                <a href="#fees" className="text-gray-300 hover:text-white">
+                <a
+                  href="#fees"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => scrollToSection(e, "fees")}
+                >
                   Fees
                 </a>
               </li>
               <li>
-                <a href="#faq" className="text-gray-300 hover:text-white">
+                <a
+                  href="#faq"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => scrollToSection(e, "faq")}
+                >
                   FAQ
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white">
-                  Privacy Policy
+                <a
+                  href="#about"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => scrollToSection(e, "about")}
+                >
+                  About
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white">
-                  Terms of Service
+                <a
+                  href="#contact"
+                  className="text-gray-300 hover:text-white"
+                  onClick={(e) => scrollToSection(e, "contact")}
+                >
+                  Contact
                 </a>
               </li>
             </ul>

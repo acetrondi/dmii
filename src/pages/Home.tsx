@@ -199,7 +199,7 @@ const Home = () => {
                       Duration
                     </h3>
                     <p className="text-lg font-medium mb-1">
-                      4 Months (Mon-Fri)
+                      3 Months (Mon-Fri)
                     </p>
                     <p className="text-course-muted">
                       Monday To Friday (2 Hrs)
@@ -219,7 +219,7 @@ const Home = () => {
                       Course Fees
                     </h3>
                     <p className="text-lg font-medium mb-1">
-                      32,000/- (Incl.all)
+                      35,000/- (Incl.all)
                     </p>
                     <p className="text-course-muted">Installment (3 Part)</p>
                   </div>
@@ -236,7 +236,7 @@ const Home = () => {
                     <h3 className="text-2xl font-bold text-course-main mb-3">
                       Course Syllabus
                     </h3>
-                    <p className="text-lg font-medium mb-1">45+ Modules</p>
+                    <p className="text-lg font-medium mb-1">14+ Modules</p>
                     <p className="text-course-muted">With Latest AI Modules</p>
                   </div>
                 </CardContent>
@@ -383,6 +383,14 @@ const Home = () => {
                         className="border-course-accent text-course-main hover:bg-course-accent/10"
                       >
                         <a href="#contact">Get Brochure</a>
+                      </Button>
+                    </div>
+                    <div className="flex flex-wrap gap-4 mt-4">
+                      <Button
+                        variant="outline"
+                        className="border-green-600 text-green-600 hover:bg-green-50"
+                      >
+                        <a href="#contact">Free Counselling</a>
                       </Button>
                     </div>
                   </div>
