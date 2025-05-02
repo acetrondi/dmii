@@ -1,21 +1,23 @@
+import React, { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 
-import React, { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Check } from 'lucide-react';
-
-const FeesSection = () => {
+const FeesSection = ({ amount = "35,000" }) => {
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    const elements = document.querySelectorAll('.scroll-reveal');
-    elements.forEach(el => observer.observe(el));
-    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll(".scroll-reveal");
+    elements.forEach((el) => observer.observe(el));
+
     return () => observer.disconnect();
   }, []);
 
@@ -30,17 +32,19 @@ const FeesSection = () => {
             Invest in your future with our affordable course pricing
           </p>
         </div>
-        
+
         <div className="max-w-3xl mx-auto bg-white rounded-xl overflow-hidden shadow-lg scroll-reveal">
           <div className="bg-course-main text-white p-8 text-center">
-            <h3 className="text-2xl font-bold">₹35,000</h3>
+            <h3 className="text-2xl font-bold">₹{amount}</h3>
             <p className="text-gray-300 mt-2">All-inclusive program fee</p>
           </div>
-          
+
           <div className="p-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-course-main">What's Included</h4>
+                <h4 className="text-lg font-semibold mb-4 text-course-main">
+                  What's Included
+                </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Check className="w-5 h-5 text-course-accent mr-2 flex-shrink-0 mt-0.5" />
@@ -64,9 +68,11 @@ const FeesSection = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div>
-                <h4 className="text-lg font-semibold mb-4 text-course-main">Payment Options</h4>
+                <h4 className="text-lg font-semibold mb-4 text-course-main">
+                  Payment Options
+                </h4>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <Check className="w-5 h-5 text-course-accent mr-2 flex-shrink-0 mt-0.5" />
@@ -91,10 +97,11 @@ const FeesSection = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-8 text-center">
               <p className="text-course-muted mb-4">
-                Have questions about pricing or payment options? Get in touch with our admissions team.
+                Have questions about pricing or payment options? Get in touch
+                with our admissions team.
               </p>
               <Button className="bg-course-main text-white hover:bg-course-main/90">
                 Enroll Now
