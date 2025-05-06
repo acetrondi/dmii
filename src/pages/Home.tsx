@@ -69,7 +69,7 @@ const Home = () => {
         {/* Hero Section */}
         <section
           className="pt-20 md:pt-28 pb-20 bg-cover bg-center"
-          style={{ backgroundImage: "url('/brand/bgmaindmii.png')" }}
+          style={{ backgroundImage: "url('/brand/bgmaindmii.jpg')" }}
         >
           <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -342,9 +342,14 @@ const Home = () => {
 
             <div className="flex flex-col gap-8 scroll-reveal">
               {/* Foundation Course - Full Width */}
-              <div className="w-full rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300">
+              <div className="w-full flex rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300 px-2">
+                <img
+                  src="./foundation-course.png"
+                  alt="Foundation Course"
+                  className="w-20 h-20 mt-4 mix-blend-multiply"
+                />
                 <div className="flex flex-col lg:flex-row">
-                  <div className="w-full lg:w-1/2 p-8">
+                  <div className="w-full p-8">
                     <h3 className="text-2xl font-bold text-course-main mb-4">
                       FOUNDATION IN DIGITAL MARKETING
                     </h3>
@@ -394,28 +399,19 @@ const Home = () => {
                       </Button>
                     </div>
                   </div>
-                  <div className="w-full lg:w-1/2">
-                    <img
-                      src="./brand/foundation.jpeg"
-                      alt="Foundation in Digital Marketing"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
                 </div>
               </div>
 
               {/* Intermediate and Expert Courses - Side by Side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Intermediate Course */}
-                <div className="rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300">
-                  <div className="flex flex-col h-full">
-                    <div className="w-full h-48">
-                      <img
-                        src="./brand/intermediate.jpeg"
-                        alt="Intermediate in AI Digital Marketing"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+                <div className="rounded-xl flex overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300 px-2">
+                  <img
+                    src="./intermediate-course.png"
+                    alt="Intermediate Course"
+                    className="w-20 h-20 mt-4 mix-blend-multiply "
+                  />
+                  <div className="flex flex-col h-full ">
                     <div className="p-6 flex-grow">
                       <h3 className="text-xl font-bold text-course-main mb-3">
                         INTERMEDIATE IN AI DIGITAL MARKETING
@@ -460,15 +456,13 @@ const Home = () => {
                 </div>
 
                 {/* Expert Course */}
-                <div className="rounded-xl overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300">
+                <div className="rounded-xl flex overflow-hidden shadow-lg bg-white hover:shadow-xl transition-all duration-300 px-2">
+                  <img
+                    src="./expert-course.png"
+                    alt="Expert Course"
+                    className="w-20 h-20 mt-4 mix-blend-multiply "
+                  />
                   <div className="flex flex-col h-full">
-                    <div className="w-full h-48">
-                      <img
-                        src="./brand/expert.jpeg"
-                        alt="Expert in Digital Marketing"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
                     <div className="p-6 flex-grow">
                       <h3 className="text-xl font-bold text-course-main mb-3">
                         EXPERT IN DIGITAL MARKETING
