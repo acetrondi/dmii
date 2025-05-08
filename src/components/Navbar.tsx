@@ -57,12 +57,8 @@ const Navbar = () => {
 
         <nav className="hidden lg:flex items-center gap-6">
           <a
-            href="#"
+            href="/"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
           >
             Home
           </a>
@@ -75,10 +71,10 @@ const Navbar = () => {
             Certificates
           </Link> */}
           <Link
-            to="/#blog"
+            to="/blog"
             className="text-course-main/90 hover:text-course-main transition-colors relative nav-link"
           >
-            Blogs
+            Blog
           </Link>
           <a
             href="#contact"
@@ -114,13 +110,8 @@ const Navbar = () => {
           <div className="absolute top-full left-0 w-full bg-white shadow-md py-4 lg:hidden animate-fade-in">
             <div className="container mx-auto px-4 flex flex-col gap-3">
               <a
-                href="#"
+                href="/"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsMenuOpen(false);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
-                }}
               >
                 Home
               </a>
@@ -152,33 +143,12 @@ const Navbar = () => {
               >
                 Expert in Digital Marketing
               </Link>
-              <a
-                href="#usp"
-                className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={(e) => scrollToSection(e, "usp")}
-              >
-                USP
-              </a>
-              <a
-                href="#ai-tools"
-                className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={(e) => scrollToSection(e, "ai-tools")}
-              >
-                AI
-              </a>
-              <a
-                href="#certificates"
-                className="text-course-main/90 hover:text-course-main transition-colors py-2"
-                onClick={(e) => scrollToSection(e, "certificates")}
-              >
-                Certificates
-              </a>
               <Link
-                to="/#blog"
+                to="/blog"
                 className="text-course-main/90 hover:text-course-main transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Blogs
+                Blog
               </Link>
               <a
                 href="#contact"

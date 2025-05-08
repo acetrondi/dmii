@@ -8,6 +8,8 @@ import Course from "./pages/Course";
 import FoundationCourse from "./pages/FoundationCourse";
 import IntermediateCourse from "./pages/IntermediateCourse";
 import ExpertCourse from "./pages/ExpertCourse";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const App = () => (
             path="/expert-in-digital-marketing"
             element={<ExpertCourse />}
           />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

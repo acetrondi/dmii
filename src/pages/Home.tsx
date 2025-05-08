@@ -187,8 +187,13 @@ const Home = () => {
         {/* Info Section */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-12 scroll-reveal">
+              <h2 className="text-3xl md:text-4xl font-bold text-course-main mb-4">
+                Your DMII Journey
+              </h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 scroll-reveal">
-              {/* Duration */}
+              {/* Enroll Today */}
               <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
                 <CardContent className="p-6">
                   <div className="flex flex-col items-center text-center">
@@ -196,53 +201,35 @@ const Home = () => {
                       <Calendar className="w-8 h-8 text-course-main" />
                     </div>
                     <h3 className="text-2xl font-bold text-course-main mb-3">
-                      Duration
+                      Enroll Today
                     </h3>
-                    <p className="text-lg font-medium mb-1">
-                      3 Months (Mon-Fri)
-                    </p>
                     <p className="text-course-muted">
-                      Monday To Friday (2 Hrs)
+                      Access our AI-powered curriculum and learn advanced
+                      digital marketing skills.
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Course Fees */}
+              {/* Real-World Application */}
               <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
                 <CardContent className="p-6">
                   <div className="flex flex-col items-center text-center">
                     <div className="w-16 h-16 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
-                      <Info className="w-8 h-8 text-course-main" />
+                      <Users className="w-8 h-8 text-course-main" />
                     </div>
                     <h3 className="text-2xl font-bold text-course-main mb-3">
-                      Course Fees
+                      Real-World Application
                     </h3>
-                    <p className="text-lg font-medium mb-1">
-                      35,000/- (Incl.all)
+                    <p className="text-course-muted">
+                      Work on live projects with real clients, and build a
+                      professional portfolio.
                     </p>
-                    <p className="text-course-muted">Installment (3 Part)</p>
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Course Syllabus */}
-              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
-                      <FileText className="w-8 h-8 text-course-main" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-course-main mb-3">
-                      Course Syllabus
-                    </h3>
-                    <p className="text-lg font-medium mb-1">14+ Modules</p>
-                    <p className="text-course-muted">With Latest AI Modules</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Certificates */}
+              {/* Become an Expert */}
               <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
                 <CardContent className="p-6">
                   <div className="flex flex-col items-center text-center">
@@ -250,10 +237,30 @@ const Home = () => {
                       <Award className="w-8 h-8 text-course-main" />
                     </div>
                     <h3 className="text-2xl font-bold text-course-main mb-3">
-                      Certificates
+                      Become an Expert
                     </h3>
-                    <p className="text-lg font-medium mb-1">4+ Certificates</p>
-                    <p className="text-course-muted">Industry Recognized</p>
+                    <p className="text-course-muted">
+                      Graduate as a certified digital marketer, ready to land a
+                      job or start freelancing.
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Stay Ahead of the Curve */}
+              <Card className="transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
+                      <ArrowRight className="w-8 h-8 text-course-main" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-course-main mb-3">
+                      Stay Ahead of the Curve
+                    </h3>
+                    <p className="text-course-muted">
+                      Get future-ready with the latest tools and strategies used
+                      by top marketers.
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -262,7 +269,7 @@ const Home = () => {
         </section>
 
         {/* DMII In Action */}
-        <section id="dmii-action" className="py-20 bg-white">
+        <section id="about" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col lg:flex-row items-center gap-12 scroll-reveal">
               <div className="w-full lg:w-1/2">
@@ -831,7 +838,7 @@ const Home = () => {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-white">
+        <section id="about-footer" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center scroll-reveal">
               <h2 className="text-3xl md:text-4xl font-bold text-course-main mb-8">

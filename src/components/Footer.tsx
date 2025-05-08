@@ -104,14 +104,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
-                  className="text-gray-300 hover:text-white"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                >
+                <a href="/" className="text-gray-300 hover:text-white">
                   Home
                 </a>
               </li>
@@ -124,24 +117,7 @@ const Footer = () => {
                   Courses
                 </a>
               </li>
-              <li>
-                <a
-                  href="#fees"
-                  className="text-gray-300 hover:text-white"
-                  onClick={(e) => scrollToSection(e, "fees")}
-                >
-                  Fees
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#faq"
-                  className="text-gray-300 hover:text-white"
-                  onClick={(e) => scrollToSection(e, "faq")}
-                >
-                  FAQ
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#about"
@@ -205,8 +181,8 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-12 pt-6 text-center text-sm text-gray-400">
           <p>
-            © {new Date().getFullYear()} Digital Marketing Institute of India.
-            All rights reserved.
+            © {new Date().getFullYear()} Digital Marketing Intelligence
+            Institute. All rights reserved.
           </p>
         </div>
       </div>
