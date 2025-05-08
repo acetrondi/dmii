@@ -8,9 +8,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
-    allowedHosts: [
-      "4700-2401-4900-88eb-2af7-9496-6ae3-7261-99c3.ngrok-free.app",
-    ],
+    // allowedHosts: [
+    //   "4700-2401-4900-88eb-2af7-9496-6ae3-7261-99c3.ngrok-free.app",
+    // ],
+    historyApiFallback: true,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(
     Boolean
@@ -18,6 +19,13 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
     },
   },
 }));
