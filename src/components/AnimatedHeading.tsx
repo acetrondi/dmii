@@ -30,7 +30,7 @@ const AnimatedHeading = () => {
         {words[currentWordIndex]}
       </span>{" "}
       the Future of Digital Marketing with{" "}
-      <span className="text-gradient text-white">AI</span>
+      <span className="text-gradient">AI</span>
     </h1>
   );
 };

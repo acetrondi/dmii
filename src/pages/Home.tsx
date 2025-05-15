@@ -121,7 +121,7 @@ const Home = () => {
                 <div className="relative w-full max-w-md">
                   <div className="rounded-2xl overflow-hidden glass-card p-6 shadow-xl">
                     <img
-                      src="./brand/hero-image.jpg"
+                      src="./brand/hero-image.jpeg"
                       alt="Digital Marketing"
                       className="w-full h-64 object-cover rounded-lg mb-6"
                     />
