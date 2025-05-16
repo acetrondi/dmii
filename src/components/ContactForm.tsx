@@ -54,20 +54,18 @@ const ContactForm = () => {
 
     try {
       // AKfycbxh68LkI-bDkxzLb0Wo7aqrTGIKoklp_ZQb_V5kpxK1A0FJmNgmdyO6L_8v7BZhfdDH;
-      const res = await fetch(
-        "https://script.google.com/macros/s/AKfycbxh68LkI-bDkxzLb0Wo7aqrTGIKoklp_ZQb_V5kpxK1A0FJmNgmdyO6L_8v7BZhfdDH/exec",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            whatsapp: formData.sameAsPhone ? formData.phone : formData.whatsapp,
-            course: formData.interestedCourse,
-          }),
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          whatsapp: formData.sameAsPhone ? formData.phone : formData.whatsapp,
+          course: formData.interestedCourse,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+
       if (res.ok) {
         alert("Form submitted!");
         setFormData({
