@@ -22,7 +22,7 @@ export default async function handler(req: Request) {
     };
 
     const res = await fetch(
-      "https://script.google.com/macros/s/AKfycbxh68LkI-bDkxzLb0Wo7aqrTGIKoklp_ZQb_V5kpxK1A0FJmNgmdyO6L_8v7BZhfdDH/exec",
+      "https://script.google.com/macros/s/AKfycbxMneLhcIXbMMLcMu96FR8LhIyetrCfwD4dRnhqyhiwFhaSOYn27z9F37dVfydhMES_/exec",
       {
         method: "POST",
         body: JSON.stringify(payload),
