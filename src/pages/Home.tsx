@@ -98,13 +98,24 @@ const Home = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-4 pt-6 scroll-reveal">
-                  <Button className="bg-course-main text-white hover:bg-course-main/90 px-8 py-6">
+                  <Button
+                    className="bg-course-main text-white hover:bg-course-main/90 px-8 py-6"
+                    onClick={() => {
+                      window.location.href =
+                        "mailto:info@dmii.in?subject=I'm interested in DMII";
+                    }}
+                  >
                     Connect Now{" "}
                     <ArrowRight className="inline-block ml-1 w-4 h-4" />
                   </Button>
                   <Button
                     variant="outline"
                     className="border-course-accent text-course-main hover:bg-course-accent/10 px-8 py-6"
+                    onClick={() => {
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                   >
                     Get Started
                   </Button>
@@ -393,8 +404,13 @@ const Home = () => {
                       <Button
                         variant="outline"
                         className="border-course-accent text-course-main hover:bg-course-accent/10"
+                        onClick={() => {
+                          document
+                            .getElementById("contact")
+                            ?.scrollIntoView({ behavior: "smooth" });
+                        }}
                       >
-                        <a href="#contact">Get Brochure</a>
+                        Get Brochure
                       </Button>
                     </div>
                     <div className="flex flex-wrap gap-4 mt-4">
@@ -454,8 +470,13 @@ const Home = () => {
                         <Button
                           variant="outline"
                           className="border-course-accent text-course-main hover:bg-course-accent/10"
+                          onClick={() => {
+                            document
+                              .getElementById("contact")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }}
                         >
-                          <a href="#contact">Get Brochure</a>
+                          Get Brochure
                         </Button>
                       </div>
                     </div>
@@ -505,8 +526,13 @@ const Home = () => {
                         <Button
                           variant="outline"
                           className="border-course-accent text-course-main hover:bg-course-accent/10"
+                          onClick={() => {
+                            document
+                              .getElementById("contact")
+                              ?.scrollIntoView({ behavior: "smooth" });
+                          }}
                         >
-                          <a href="#contact">Get Brochure</a>
+                          Get Brochure
                         </Button>
                       </div>
                     </div>
@@ -657,40 +683,109 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16 scroll-reveal">
               <h2 className="text-3xl md:text-4xl font-bold text-course-main mb-4">
-                Placement Assistance
+                Job-Seekers to Skill-Masters
               </h2>
               <p className="text-course-muted max-w-2xl mx-auto">
-                Our extensive industry network helps graduates land their dream
-                roles at leading companies.
+                Transform your career journey with our comprehensive placement
+                support and industry connections. From resume building to
+                interview preparation, we guide you every step of the way.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 scroll-reveal">
-              {["python", "nykaa", "razorpay", "hubspot"].map(
-                (company, index) => (
-                  <div key={index} className="flex flex-col items-center">
-                    <div className="w-20 h-20 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
-                      <img
-                        src={`./${company}.png`}
-                        alt={`${company} logo`}
-                        className="w-12 h-12 object-contain"
-                      />
-                    </div>
-                    <h3 className="text-xl font-semibold text-course-main mb-2">
-                      {company.charAt(0).toUpperCase() + company.slice(1)}
-                    </h3>
-                    <p className="text-center text-course-muted">
-                      {index === 0
-                        ? "Tech Opportunities"
-                        : index === 1
-                        ? "E-commerce Roles"
-                        : index === 2
-                        ? "Fintech Positions"
-                        : "Marketing Roles"}
-                    </p>
-                  </div>
-                )
-              )}
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
+                  <img
+                    src="./python.png"
+                    alt="python logo"
+                    className="w-12 h-12 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-course-main mb-2">
+                  Tech Opportunities
+                </h3>
+                <p className="text-center text-course-muted">
+                  Launch your career in tech with leading companies
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
+                  <img
+                    src="./nykaa.png"
+                    alt="nykaa logo"
+                    className="w-12 h-12 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-course-main mb-2">
+                  E-commerce Roles
+                </h3>
+                <p className="text-center text-course-muted">
+                  Drive growth in India's fastest-growing sector
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
+                  <img
+                    src="./razorpay.png"
+                    alt="razorpay logo"
+                    className="w-12 h-12 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-course-main mb-2">
+                  Fintech Positions
+                </h3>
+                <p className="text-center text-course-muted">
+                  Shape the future of digital finance
+                </p>
+              </div>
+
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 rounded-full bg-course-accent/20 flex items-center justify-center mb-4">
+                  <img
+                    src="./hubspot.png"
+                    alt="hubspot logo"
+                    className="w-12 h-12 object-contain"
+                  />
+                </div>
+                <h3 className="text-xl font-semibold text-course-main mb-2">
+                  Marketing Roles
+                </h3>
+                <p className="text-center text-course-muted">
+                  Lead digital transformation in top brands
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 scroll-reveal">
+              <div className="bg-course-accent/5 p-6 rounded-lg">
+                <h4 className="text-lg font-semibold text-course-main mb-3">
+                  Resume Building
+                </h4>
+                <p className="text-course-muted">
+                  Get expert guidance to create an ATS-friendly resume that
+                  stands out to recruiters
+                </p>
+              </div>
+              <div className="bg-course-accent/5 p-6 rounded-lg">
+                <h4 className="text-lg font-semibold text-course-main mb-3">
+                  Interview Preparation
+                </h4>
+                <p className="text-course-muted">
+                  Master interview techniques with mock sessions and
+                  personalized feedback
+                </p>
+              </div>
+              <div className="bg-course-accent/5 p-6 rounded-lg">
+                <h4 className="text-lg font-semibold text-course-main mb-3">
+                  Career Counseling
+                </h4>
+                <p className="text-course-muted">
+                  One-on-one sessions to align your skills with industry
+                  opportunities
+                </p>
+              </div>
             </div>
           </div>
         </section>

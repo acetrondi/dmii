@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,10 +60,9 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
 
     try {
-      // AKfycbxh68LkI-bDkxzLb0Wo7aqrTGIKoklp_ZQb_V5kpxK1A0FJmNgmdyO6L_8v7BZhfdDH;
       const res = await fetch("/api/contact", {
         method: "POST",
         body: JSON.stringify({
@@ -76,7 +76,6 @@ const ContactForm = () => {
       });
 
       if (res.ok) {
-        alert("Form submitted!");
         setFormData({
           name: "",
           email: "",
@@ -92,17 +91,23 @@ const ContactForm = () => {
             "Thank you for your interest. We'll contact you shortly. Downloading brochure...",
         });
 
-        // Download brochure after successful submission
         downloadBrochure();
       } else {
-        alert("Error submitting form.");
+        toast({
+          title: "Error submitting form",
+          description: "Please try again later.",
+          variant: "destructive",
+        });
       }
     } catch (err) {
       console.error(err);
       toast({
-        title: "Error submitting form.",
-        description: "Please try again.",
+        title: "Error submitting form",
+        description: "Please try again later.",
+        variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -229,8 +234,17 @@ const ContactForm = () => {
       <Button
         type="submit"
         className="w-full bg-course-main hover:bg-course-main/90 text-white py-3"
+        disabled={isSubmitting}
       >
-        Submit Form <Check className="ml-2 h-4 w-4" />
+        {isSubmitting ? (
+          <>
+            Submitting Form <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+          </>
+        ) : (
+          <>
+            Submit Form <Check className="ml-2 h-4 w-4" />
+          </>
+        )}
       </Button>
     </form>
   );
