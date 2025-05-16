@@ -14,6 +14,15 @@ const ContactForm = () => {
     interestedCourse: "",
   });
 
+  const downloadBrochure = () => {
+    const link = document.createElement("a");
+    link.href = "/brochure.pdf";
+    link.download = "DMII_Course_Brochure.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -80,8 +89,11 @@ const ContactForm = () => {
         toast({
           title: "Form Submitted Successfully!",
           description:
-            "Thank you for your interest. We'll contact you shortly.",
+            "Thank you for your interest. We'll contact you shortly. Downloading brochure...",
         });
+
+        // Download brochure after successful submission
+        downloadBrochure();
       } else {
         alert("Error submitting form.");
       }
