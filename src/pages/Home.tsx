@@ -102,7 +102,7 @@ const Home = () => {
                     className="bg-course-main text-white hover:bg-course-main/90 px-8 py-6"
                     onClick={() => {
                       window.location.href =
-                        "mailto:info@dmii.in?subject=I'm interested in DMII";
+                        "mailto:dmii.work@gmail.com?subject=I'm interested in DMII";
                     }}
                   >
                     Connect Now{" "}
