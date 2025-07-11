@@ -148,10 +148,10 @@ const Footer = () => {
                   123 Education Avenue, Bangalore, Karnataka 560001
                 </span>
               </li> */}
-              <li className="flex items-start">
+              {/* <li className="flex items-start">
                 <span className="text-course-accent mr-2">📱</span>
                 <span className="text-gray-300">+91 72086 99536</span>
-              </li>
+              </li> */}
               <li className="flex items-start">
                 <span className="text-course-accent mr-2">✉️</span>
                 <span className="text-gray-300">dmii.work@gmail.com</span>
